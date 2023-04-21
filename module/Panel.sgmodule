@@ -84,7 +84,7 @@ NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update
 SurgePro_ReloadProfile = type=generic,timeout=10,script-path= https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Surge-Pro/Moore/SurgePro.js ,argument=icon=paperplane.circle&color=#f6c970
 
 #机场流量信息
-Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/modules/Panel/Sub-info/Moore/Sub-info.js,script-update-interval=0,argument=url=https%3A%2F%2Fv2b.acclagh.eu.org%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D2547bd6ea92d8c1229e01015bbbe3557&reset_day=1&title=自建机场&icon=bolt.horizontal.circle.fill
+Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/modules/Panel/Sub-info/Moore/Sub-info.js,script-update-interval=0,argument=url=转换后的订阅&reset_day=1&title=自建机场&icon=bolt.horizontal.circle.fill
 
 #节日信息
 group:1
