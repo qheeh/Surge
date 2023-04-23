@@ -1,0 +1,78 @@
+#!name=Panel
+#!desc=集合Surge Pro，流媒体解锁检测，Network Info Panel，Flush DNS
+
+
+[Panel]
+#Surge Pro
+SurgePro_ReloadProfile = script-name=SurgePro_ReloadProfile,update-interval=1
+
+#节日信息
+Timecard = script-name=Timecard,update-interval=3600
+
+#流量统计
+TrafficStatistics = script-name=TrafficStatistics, update-interval=1
+
+#NetSpeed
+NetSpeed = script-name=NetSpeed,update-interval=-1
+
+#Network Info Panel
+NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
+
+#Flush DNS
+FlushDNS = script-name=FlushDNS,update-interval=600
+
+#流媒体解锁检测
+stream-all = script-name=stream-all, title="流媒体解锁检测", content="请刷新面板", update-interval=3600
+
+# ChatGPT Panel
+CFGPT = script-name=CFGPT,update-interval=-1
+
+#WARP Panel
+☁ WARP Panel = title="☁ 𝙒𝘼𝙍𝙋 𝙄𝙣𝙛𝙤", icon="lock.icloud.fill", "icon-color": "#f48220", script-name=☁ WARP Panel
+
+
+
+[Script]
+#Surge Pro
+SurgePro_ReloadProfile = type=generic,timeout=10,script-path= https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Surge-Pro/Moore/SurgePro.js ,argument=icon=paperplane.circle&color=#f6c970
+
+#节日信息
+group:1
+Timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
+
+# > 流量统计 点击以切换网络界面
+TrafficStatistics = type=generic,timeout=10,script-path= https://raw.githubusercontent.com/fishingworld/something/main/PanelScripts/trafficstatistics.js, argument=icon=bonjour&color=#007aff
+
+#NetSpeed
+NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/modules/Panel/Net_Speed/Net_Speed.js,argument=title=NetSpeed&iconfast=bolt&iconmid=hare&iconslow=tortoise&colorlow=#06D6A0&colormid=#FFD166&colorhigh=#EF476F&mb=3
+
+#Network Info Panel
+net-info-panel.js=script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Network-Info/Moore/Network-Info.js,type=generic,timeout=30
+
+#快速清除Surge的DNS缓存
+FlushDNS = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Flush-DNS/Moore/Flush-DNS.js,argument=title=DNS FLush&icon=cube&color=#afe59a&server=false
+
+#流媒体解锁检测
+stream-all = type=generic, timeout=15, script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Stream-All/Moore/Stream-All.js
+
+#ChatGPT Panel
+CFGPT = type=generic,timeout=6,script-path=https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/modules/Panel/CFGPT/CFGPT_2.js,argument=icon=lasso.and.sparkles&iconerr=xmark.seal.fill&icon-color=#336FA9&iconerr-color=#D65C51
+
+
+# WARP Panel
+#!PROFILE-VERSION-REQUIRED 10 ☁ WARP Panel = type=generic, timeout=15, script-path=https://raw.githubusercontent.com/VirgilClyne/Cloudflare/main/js/Cloudflare.1.1.1.1.panel.js
+# WARP Personal
+☁ WARP Personal Request = type=http-request,pattern=^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$, requires-body=1, script-path=https://raw.githubusercontent.com/VirgilClyne/Cloudflare/main/js/Cloudflare.1.1.1.1.request.js
+☁ WARP Personal Response = type=http-response,pattern=^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$, requires-body=1, script-path=https://raw.githubusercontent.com/VirgilClyne/Cloudflare/main/js/Cloudflare.1.1.1.1.response.js
+# Cloudflare for Teams
+☁ WARP Teams Request = type=http-request,pattern=^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/t\.[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$, requires-body=1, script-path=https://raw.githubusercontent.com/VirgilClyne/Cloudflare/main/js/Cloudflare.1.1.1.1.request.js
+☁ WARP Teams Response = type=http-response,pattern=^https?:\/\/(api|zero-trust-client)\.cloudflareclient\.com\/(.*)\/reg\/t\.[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$, requires-body=1, script-path=https://raw.githubusercontent.com/VirgilClyne/Cloudflare/main/js/Cloudflare.1.1.1.1.response.js
+
+
+
+[Host]
+ip-api.com = 208.95.112.1
+
+
+[MITM]
+hostname = %APPEND% api.cloudflareclient.com, zero-trust-client.cloudflareclient.com
